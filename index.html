@@ -3,50 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Profit Calculator</title>
+    <title>Investment Gain Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator-container">
-        <h1>💰 Investment Profit Calculator</h1>
+        <h1>📈 Investment Gain Calculator</h1>
         
         <div class="input-group">
-            <label for="investment">Initial Investment (₹):</label>
-            <input type="number" id="investment" placeholder="100">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="100">
         </div>
         
         <div class="input-group">
-            <label for="entry-cost">Entry Cost (₹):</label>
-            <input type="number" id="entry-cost" placeholder="2.5">
+            <label for="entry-price">Entry Price (₹):</label>
+            <input type="number" id="entry-price" placeholder="10">
         </div>
         
         <div class="input-group">
-            <label for="exit-cost">Exit Cost (₹):</label>
-            <input type="number" id="exit-cost" placeholder="3">
+            <label for="exit-price">Exit Price (₹):</label>
+            <input type="number" id="exit-price" placeholder="12">
         </div>
         
         <div class="input-group">
-            <label for="gains">Gross Gains (₹):</label>
-            <input type="number" id="gains" placeholder="20">
+            <label for="entry-cost">Entry Cost (Brokerage, ₹):</label>
+            <input type="number" id="entry-cost" placeholder="20">
         </div>
         
-        <button id="calculate-btn">Calculate Profit</button>
+        <div class="input-group">
+            <label for="exit-cost">Exit Cost (Brokerage, ₹):</label>
+            <input type="number" id="exit-cost" placeholder="20">
+        </div>
+        
+        <button id="calculate-btn">Calculate Gain</button>
         
         <div id="results" class="results-container">
             <h2>📊 Results</h2>
+            <div class="result-item">
+                <span>Invested Amount:</span>
+                <span id="invested-amount">₹0.00</span>
+            </div>
+            <div class="result-item">
+                <span>Final Amount:</span>
+                <span id="final-amount">₹0.00</span>
+            </div>
+            <div class="result-item">
+                <span>Gross Gain:</span>
+                <span id="gross-gain">₹0.00</span>
+            </div>
             <div class="result-item">
                 <span>Total Costs:</span>
                 <span id="total-cost">₹0.00</span>
             </div>
             <div class="result-item">
-                <span>Net Profit:</span>
-                <span id="net-profit">₹0.00</span>
+                <span>Net Gain:</span>
+                <span id="net-gain">₹0.00</span>
             </div>
             <div class="result-item">
                 <span>ROI:</span>
                 <span id="roi">0.00%</span>
             </div>
-            <div id="profit-status"></div>
+            <div id="gain-status"></div>
         </div>
     </div>
 
