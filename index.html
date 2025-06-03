@@ -3,25 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Gain Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Gross Gain Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .calculator {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .profit {
+            color: green;
+            font-weight: bold;
+        }
+        .loss {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <div class="calculator-container">
-        <h1>💰 Investment Gain Calculator</h1>
+    <div class="calculator">
+        <h1>Investment Gain Calculator</h1>
         
         <div class="input-group">
-            <label for="investment">Investment Amount (₹):</label>
+            <label for="investment">Initial Investment (₹):</label>
             <input type="number" id="investment" value="100">
         </div>
         
         <div class="input-group">
-            <label for="entry-cost">Entry Cost (Brokerage, ₹):</label>
+            <label for="entry-cost">Entry Cost (₹):</label>
             <input type="number" id="entry-cost" value="2.5">
         </div>
         
         <div class="input-group">
-            <label for="exit-cost">Exit Cost (Brokerage, ₹):</label>
+            <label for="exit-cost">Exit Cost (₹):</label>
             <input type="number" id="exit-cost" value="3">
         </div>
         
@@ -30,30 +94,63 @@
             <input type="number" id="final-amount" placeholder="Enter final amount">
         </div>
         
-        <button id="calculate-btn">Calculate Gains</button>
+        <button onclick="calculateGains()">Calculate Gross Gains</button>
         
-        <div id="results" class="results-container">
-            <h2>📊 Results</h2>
+        <div id="results" class="results" style="display: none;">
+            <h2>Results</h2>
             <div class="result-item">
                 <span>Total Costs:</span>
-                <span id="total-cost">₹5.50</span>
+                <span id="total-cost">₹0.00</span>
             </div>
             <div class="result-item">
-                <span>Gross Gain:</span>
+                <span>Gross Gains:</span>
                 <span id="gross-gain">₹0.00</span>
             </div>
             <div class="result-item">
-                <span>Net Gain:</span>
+                <span>Net Gains:</span>
                 <span id="net-gain">₹0.00</span>
             </div>
             <div class="result-item">
                 <span>ROI:</span>
                 <span id="roi">0.00%</span>
             </div>
-            <div id="gain-status"></div>
+            <div id="status-message"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function calculateGains() {
+            // Get input values
+            const investment = parseFloat(document.getElementById('investment').value) || 0;
+            const entryCost = parseFloat(document.getElementById('entry-cost').value) || 0;
+            const exitCost = parseFloat(document.getElementById('exit-cost').value) || 0;
+            const finalAmount = parseFloat(document.getElementById('final-amount').value) || 0;
+            
+            // Calculations
+            const totalCost = entryCost + exitCost;
+            const grossGain = finalAmount - investment;
+            const netGain = grossGain - totalCost;
+            const roi = (netGain / investment) * 100;
+            
+            // Display results
+            document.getElementById('total-cost').textContent = `₹${totalCost.toFixed(2)}`;
+            document.getElementById('gross-gain').textContent = `₹${grossGain.toFixed(2)}`;
+            document.getElementById('net-gain').textContent = `₹${netGain.toFixed(2)}`;
+            document.getElementById('roi').textContent = `${roi.toFixed(2)}%`;
+            
+            // Show status message
+            const statusElement = document.getElementById('status-message');
+            if (netGain > 0) {
+                statusElement.innerHTML = `✅ <span class="profit">Profit: ₹${netGain.toFixed(2)} (${roi.toFixed(2)}% ROI)</span>`;
+            } else if (netGain < 0) {
+                statusElement.innerHTML = `❌ <span class="loss">Loss: ₹${Math.abs(netGain).toFixed(2)} (${Math.abs(roi).toFixed(2)}% Loss)</span>`;
+            } else {
+                statusElement.innerHTML = `➖ Break Even (No profit or loss)`;
+            }
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
