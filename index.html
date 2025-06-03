@@ -8,52 +8,39 @@
 </head>
 <body>
     <div class="calculator-container">
-        <h1>📈 Investment Gain Calculator</h1>
+        <h1>💰 Investment Gain Calculator</h1>
         
         <div class="input-group">
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" placeholder="100">
-        </div>
-        
-        <div class="input-group">
-            <label for="entry-price">Entry Price (₹):</label>
-            <input type="number" id="entry-price" placeholder="10">
-        </div>
-        
-        <div class="input-group">
-            <label for="exit-price">Exit Price (₹):</label>
-            <input type="number" id="exit-price" placeholder="12">
+            <label for="investment">Investment Amount (₹):</label>
+            <input type="number" id="investment" value="100">
         </div>
         
         <div class="input-group">
             <label for="entry-cost">Entry Cost (Brokerage, ₹):</label>
-            <input type="number" id="entry-cost" placeholder="20">
+            <input type="number" id="entry-cost" value="2.5">
         </div>
         
         <div class="input-group">
             <label for="exit-cost">Exit Cost (Brokerage, ₹):</label>
-            <input type="number" id="exit-cost" placeholder="20">
+            <input type="number" id="exit-cost" value="3">
         </div>
         
-        <button id="calculate-btn">Calculate Gain</button>
+        <div class="input-group">
+            <label for="final-amount">Final Amount Received (₹):</label>
+            <input type="number" id="final-amount" placeholder="Enter final amount">
+        </div>
+        
+        <button id="calculate-btn">Calculate Gains</button>
         
         <div id="results" class="results-container">
             <h2>📊 Results</h2>
             <div class="result-item">
-                <span>Invested Amount:</span>
-                <span id="invested-amount">₹0.00</span>
-            </div>
-            <div class="result-item">
-                <span>Final Amount:</span>
-                <span id="final-amount">₹0.00</span>
+                <span>Total Costs:</span>
+                <span id="total-cost">₹5.50</span>
             </div>
             <div class="result-item">
                 <span>Gross Gain:</span>
                 <span id="gross-gain">₹0.00</span>
-            </div>
-            <div class="result-item">
-                <span>Total Costs:</span>
-                <span id="total-cost">₹0.00</span>
             </div>
             <div class="result-item">
                 <span>Net Gain:</span>
