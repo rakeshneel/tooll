@@ -3,19 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ফ্রি ব্যাকগ্রাউন্ড রিমুভার টুল</title>
-    <meta name="description" content="অটোমেটিকভাবে ইমেজের ব্যাকগ্রাউন্ড মুছুন। ১০০% ফ্রি, কোনো ওয়াটারমার্ক নেই।">
+    <title>Investment Profit Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>ব্যাকগ্রাউন্ড রিমুভ করুন 🚀</h1>
-        <div class="upload-area" id="dropZone">
-            <p>ইমেজ এখানে ড্রপ করুন বা ক্লিক করে সিলেক্ট করুন</p>
-            <input type="file" id="fileInput" accept="image/*">
+    <div class="calculator-container">
+        <h1>💰 Investment Profit Calculator</h1>
+        
+        <div class="input-group">
+            <label for="investment">Initial Investment (₹):</label>
+            <input type="number" id="investment" placeholder="100">
         </div>
-        <div class="result-area" id="resultArea"></div>
+        
+        <div class="input-group">
+            <label for="entry-cost">Entry Cost (₹):</label>
+            <input type="number" id="entry-cost" placeholder="2.5">
+        </div>
+        
+        <div class="input-group">
+            <label for="exit-cost">Exit Cost (₹):</label>
+            <input type="number" id="exit-cost" placeholder="3">
+        </div>
+        
+        <div class="input-group">
+            <label for="gains">Gross Gains (₹):</label>
+            <input type="number" id="gains" placeholder="20">
+        </div>
+        
+        <button id="calculate-btn">Calculate Profit</button>
+        
+        <div id="results" class="results-container">
+            <h2>📊 Results</h2>
+            <div class="result-item">
+                <span>Total Costs:</span>
+                <span id="total-cost">₹0.00</span>
+            </div>
+            <div class="result-item">
+                <span>Net Profit:</span>
+                <span id="net-profit">₹0.00</span>
+            </div>
+            <div class="result-item">
+                <span>ROI:</span>
+                <span id="roi">0.00%</span>
+            </div>
+            <div id="profit-status"></div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
